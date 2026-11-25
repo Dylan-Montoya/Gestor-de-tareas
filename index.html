@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Tareas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- PANEL IZQUIERDO: Configuración y Estadísticas -->
+    <aside class="side-panel left-panel">
+      <div class="panel-header">
+        <h2>Ajustes</h2>
+        <button id="theme-toggle" class="theme-btn" title="Cambiar tema">🌙</button>
+      </div>
+
+      <div class="panel-section">
+        <h3>Filtrar por Prioridad</h3>
+        <div class="priority-filters">
+          <button class="priority-btn active" data-priority="all">Todas</button>
+          <button class="priority-btn high" data-priority="alta">🔴 Alta</button>
+          <button class="priority-btn medium" data-priority="media">🟡 Media</button>
+          <button class="priority-btn low" data-priority="baja">🟢 Baja</button>
+        </div>
+      </div>
+
+      <div class="panel-section stats-box">
+        <h3>Tu Progreso</h3>
+        <div class="progress-bar-bg">
+          <div id="progress-bar" class="progress-bar-fill"></div>
+        </div>
+        <p id="progress-text">0% completado</p>
+        <div class="stats-counters">
+          <div><span id="stat-total">0</span><small>Total</small></div>
+          <div><span id="stat-completed">0</span><small>Listas</small></div>
+          <div><span id="stat-pending">0</span><small>Pendientes</small></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTRO: Lista principal -->
+    <main class="main-panel">
+      <header class="main-header">
+        <h1>Mis Tareas</h1>
+        <p class="subtitle">Organiza tu día con facilidad</p>
+      </header>
+
+      <form id="todo-form" class="todo-form">
+        <div class="input-row">
+          <input 
+            type="text" 
+            id="todo-input" 
+            placeholder="¿Qué necesitas hacer hoy?" 
+            required 
+            autocomplete="off"
+          >
+          <button type="submit" id="add-btn">Agregar</button>
+        </div>
+        <div class="meta-row">
+          <div class="select-group">
+            <label for="todo-priority">Prioridad:</label>
+            <select id="todo-priority">
+              <option value="media">🟡 Media</option>
+              <option value="alta">🔴 Alta</option>
+              <option value="baja">🟢 Baja</option>
+            </select>
+          </div>
+          <div class="select-group">
+            <label for="todo-date">Fecha límite:</label>
+            <input type="date" id="todo-date">
+          </div>
+        </div>
+      </form>
+
+      <div class="filter-controls">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="pending">Pendientes</button>
+        <button class="filter-btn" data-filter="completed">Completadas</button>
+      </div>
+
+      <ul id="todo-list" class="todo-list"></ul>
+
+      <footer class="todo-footer">
+        <span id="items-left">0 tareas pendientes</span>
+        <button id="clear-completed" class="clear-btn">Limpiar completadas</button>
+      </footer>
+    </main>
+
+    <!-- PANEL DERECHO: Próximos vencimientos y notas -->
+    <aside class="side-panel right-panel">
+      <div class="panel-header">
+        <h2>Próximas Fechas</h2>
+      </div>
+
+      <div class="panel-section">
+        <p class="section-desc">Tareas con fecha programada:</p>
+        <ul id="upcoming-list" class="upcoming-list"></ul>
+      </div>
+
+      <div class="panel-section tip-box">
+        <h3>💡 Consejo del día</h3>
+        <p>Divide las tareas grandes en pasos pequeños y empieza siempre por las de alta prioridad.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
