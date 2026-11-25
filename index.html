@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090a15" />
+    <title>Dream3D — Atlas de los sueños</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <main id="game" aria-label="Juego de exploración de sueños">
+      <div id="scene" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div id="flash-overlay" aria-hidden="true"></div>
+
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Dream3D, inicio">
+          <span class="brand-mark">✳</span>
+          <span>DREAM<span class="brand-light">3D</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="dream-count"><span class="count-dot"></span><span id="dream-count">0</span> / <span id="dream-total">7</span> RECUERDOS</span>
+          <button class="sound-button" id="sound-button" aria-label="Activar o desactivar ambiente" title="Ambiente">♫</button>
+        </div>
+      </header>
+
+      <section class="dream-heading" aria-live="polite">
+        <div class="eyebrow"><span id="realm-index">SUEÑO 01</span><span class="eyebrow-line"></span><span id="realm-mood">LA PESADILLA</span></div>
+        <h1 id="realm-title">El bosque<br /><em>que olvidó</em></h1>
+        <p id="realm-description">Hay algo esperando entre los árboles torcidos.<br />No todos los sueños quieren que los despiertes.</p>
+      </section>
+      <section id="challenge-panel" class="challenge-panel" aria-live="polite">
+        <div class="challenge-kicker"><span class="challenge-spark">✦</span> RETO DEL SUEÑO</div>
+        <div id="challenge-title" class="challenge-title"></div>
+        <div class="challenge-progress"><span id="challenge-progress-bar"></span></div>
+        <div class="challenge-footer"><span id="challenge-progress-text"></span><span id="monster-name"></span><span class="flash-hint">LUZ <kbd>F</kbd></span></div>
+        <div id="monster-warning" class="monster-warning" role="status"></div>
+      </section>
+
+      <div class="crosshair" aria-hidden="true"><span></span><i></i></div>
+      <div class="realm-caption"><span class="caption-star">✳</span><span id="caption-text">UN LUGAR QUE RECUERDAS</span></div>
+
+      <aside class="dream-index">
+        <div class="index-heading"><span>ATLAS ONÍRICO</span><span class="index-rule"></span></div>
+        <div id="realm-list" class="realm-list"></div>
+      </aside>
+
+      <div id="prompt" class="interaction-prompt" aria-live="polite"></div>
+
+      <footer class="bottom-bar">
+        <div class="controls-hint">
+          <span class="key-group"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>
+          <span>EXPLORAR</span>
+          <span class="hint-divider"></span>
+          <kbd class="wide-key">E</kbd><span>ATRAVESAR PORTAL</span>
+        </div>
+        <button id="look-button" class="look-button"><span class="look-icon">⌖</span> <span>ENTRAR AL SUEÑO</span></button>
+        <div class="mouse-hint"><span class="mouse-icon">◉</span> MOVER LA MIRADA</div>
+      </footer>
+      <div class="touch-controls" aria-label="Controles táctiles">
+        <button data-move="w" aria-label="Avanzar">▲</button>
+        <button data-move="a" aria-label="Mover a la izquierda">◀</button>
+        <button data-move="s" aria-label="Retroceder">▼</button>
+        <button data-move="d" aria-label="Mover a la derecha">▶</button>
+        <button class="flash-control" id="flash-button" aria-label="Usar destello para ahuyentar al monstruo">✦</button>
+      </div>
+
+      <div id="intro" class="intro-screen">
+        <div class="intro-card">
+          <div class="intro-symbol">✳</div>
+          <p class="intro-kicker">UN ATLAS DE LO QUE SOÑAMOS</p>
+          <h2>¿A dónde te<br /><em>llevará el sueño?</em></h2>
+          <p class="intro-copy">Busca tres objetos en cada sueño sin dejar que te alcance su monstruo. Completa el reto y cruza los portales a mundos nuevos.</p>
+          <button id="start-button" class="start-button">COMENZAR A EXPLORAR <span>↗</span></button>
+          <div class="intro-controls"><span><kbd>W A S D</kbd> MOVERSE</span><span><kbd>E</kbd> PORTAL</span><span><kbd>F</kbd> DESTELLO</span></div>
+        </div>
+      </div>
+      <div id="toast" class="toast" role="status"></div>
+    </main>
+  </body>
+</html>
